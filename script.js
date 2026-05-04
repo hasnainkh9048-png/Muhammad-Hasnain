@@ -1,7 +1,7 @@
 // script.js - Interactive Portfolio for Muhammad Hasnain
 
-// Mobile Menu Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
     const mobileBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 cursorOutline.style.left = e.clientX + 'px';
                 cursorOutline.style.top = e.clientY + 'px';
             });
-            // Hover effect on buttons
+            
             const hoverables = document.querySelectorAll('a, button, .btn, .social-icons-hero a, .tool-badge');
             hoverables.forEach(el => {
                 el.addEventListener('mouseenter', () => {
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Simple Back to top animation
+    // Back to top animation
     const backTop = document.querySelector('.back-top');
     if(backTop) {
         backTop.addEventListener('click', (e) => {
@@ -83,5 +83,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    console.log("Portfolio ready — Profile picture path: images/profile.png (update if needed)");
+    console.log("Portfolio ready — Profile picture perfectly fitted in frame.");
 });
