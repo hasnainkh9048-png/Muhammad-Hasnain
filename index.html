@@ -6,14 +6,12 @@
     <title>Muhammad Hasnain | IT Support Specialist Portfolio</title>
     <!-- Google Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-    <!-- TO THIS (relative path - works on GitHub) -->
-<link rel="stylesheet" href="./style.css">
-<script src="./script.js"></script>
-<img src="./images/profile.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-    <!-- Custom Cursor / Scroll effect optional but clean -->
+    <!-- Custom Cursor -->
     <div class="cursor-dot" data-cursor-dot></div>
     <div class="cursor-outline" data-cursor-outline></div>
 
@@ -58,12 +56,10 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="profile-img-placeholder">
-                    <!-- IMPORTANT: Update the src path to match your GitHub repo structure -->
-                    <!-- Recommended: Place profile.png in an 'images' folder and use: src="images/profile.png" -->
-                    <img class="real-profile-img" src="images/profile.png" 
-                         alt="Muhammad Hasnain Profile Picture" 
-                         onerror="this.onerror=null; this.src='https://via.placeholder.com/320x320?text=Profile+Photo'; this.style.objectFit='cover';">
+                <div class="profile-frame">
+                    <img class="profile-img" src="./images/profile.png" 
+                         alt="Muhammad Hasnain" 
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/400x400?text=Add+Photo'">
                 </div>
             </div>
         </div>
@@ -256,6 +252,6 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>
