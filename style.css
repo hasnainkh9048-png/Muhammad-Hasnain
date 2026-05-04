@@ -19,7 +19,6 @@
     --text-muted: #475569;
     --shadow-sm: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
     --shadow-md: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.02);
-    --border-radius: 1rem;
 }
 
 html {
@@ -34,7 +33,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Custom cursor (optional but cool) */
+/* Custom cursor */
 .cursor-dot, .cursor-outline {
     pointer-events: none;
     position: fixed;
@@ -65,7 +64,7 @@ body {
     .cursor-dot, .cursor-outline { display: none; }
 }
 
-/* Header styles */
+/* Header */
 .site-header {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(8px);
@@ -95,18 +94,6 @@ body {
     gap: 0.5rem;
     font-weight: 800;
     font-size: 1.6rem;
-}
-
-.logo-text {
-    background: var(--primary);
-    color: white;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    font-size: 1.3rem;
 }
 
 .logo-full {
@@ -175,7 +162,6 @@ body {
 
 .highlight {
     color: var(--primary);
-    position: relative;
 }
 
 .hero-subtitle {
@@ -260,31 +246,34 @@ body {
     justify-content: center;
 }
 
-/* Profile picture styling */
-.profile-img-placeholder {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.real-profile-img {
+/* PERFECT FIT PROFILE FRAME - Image fills completely */
+.profile-frame {
     width: 320px;
     height: 320px;
-    object-fit: cover;
     border-radius: 32px;
+    background: linear-gradient(145deg, #EFF6FF, #FFFFFF);
     box-shadow: var(--shadow-md);
+    overflow: hidden;
+    position: relative;
     border: 4px solid white;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: linear-gradient(145deg, #EFF6FF, #FFFFFF);
 }
 
-.real-profile-img:hover {
+.profile-frame:hover {
     transform: scale(1.02);
     box-shadow: 0 25px 30px -12px rgba(0,102,255,0.25);
 }
 
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+}
+
 @media (max-width: 768px) {
-    .real-profile-img {
+    .profile-frame {
         width: 260px;
         height: 260px;
     }
@@ -408,7 +397,6 @@ section {
     background: var(--primary);
     height: 8px;
     border-radius: 12px;
-    width: 0%;
 }
 
 .tools-badge-container {
@@ -427,7 +415,7 @@ section {
     box-shadow: var(--shadow-sm);
 }
 
-/* Experience timeline */
+/* Experience */
 .exp-timeline {
     margin-bottom: 3rem;
 }
