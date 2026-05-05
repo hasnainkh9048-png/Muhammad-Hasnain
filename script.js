@@ -1,95 +1,74 @@
-// Mobile menu toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('nav ul');
-    
-    if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('show');
+document.addEventListener('DOMContentLoaded', () => {
+    // Custom cursor
+    if (window.matchMedia("(pointer: fine)").matches) {
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            if (cursorDot) {
+                cursorDot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
+            }
+            if (cursorOutline) {
+                cursorOutline.style.transform = `translate(${e.clientX - 15}px, ${e.clientY - 15}px)`;
+            }
         });
     }
-    
+
+    // Mobile menu
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navList = document.querySelector('nav ul');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            navList.classList.toggle('show');
+        });
+    }
+
     // Close menu when clicking a link
     const navLinks = document.querySelectorAll('nav ul li a');
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            navMenu.classList.remove('show');
+            navList.classList.remove('show');
         });
     });
-    
-    // Smooth scrolling for anchor links
+
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
                 e.preventDefault();
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
-    
-    // Contact form submission
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-    
+
+    // Contact form
+    const contactForm = document.getElementById('demo-contact-form');
+    const feedback = document.getElementById('formFeedback');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const nameInput = this.querySelector('input[placeholder="Your Name"]');
-            const emailInput = this.querySelector('input[placeholder="Your Email"]');
-            const messageInput = this.querySelector('textarea');
-            
-            if (nameInput.value.trim() === '' || emailInput.value.trim() === '' || messageInput.value.trim() === '') {
-                formMessage.textContent = 'Please fill in all fields.';
-                formMessage.style.color = '#e53e3e';
+            const inputs = contactForm.querySelectorAll('input, textarea');
+            let allFilled = true;
+            inputs.forEach(inp => {
+                if (inp.value.trim() === '') allFilled = false;
+            });
+            if (!allFilled) {
+                feedback.textContent = '⚠️ error: all fields required';
+                feedback.style.color = '#ff3860';
                 return;
             }
-            
-            formMessage.textContent = 'Thank you! Hasnain will get back to you soon.';
-            formMessage.style.color = '#0f3460';
-            
-            // Clear form
-            nameInput.value = '';
-            emailInput.value = '';
-            messageInput.value = '';
-            
-            setTimeout(() => {
-                formMessage.textContent = '';
-            }, 5000);
+            feedback.textContent = '✔ message sent! Hasnain will reply soon.';
+            feedback.style.color = '#00e6a0';
+            contactForm.reset();
+            setTimeout(() => { feedback.textContent = ''; }, 4000);
         });
     }
-    
-    // Update footer year
+
+    // Footer year
     const footerYear = document.querySelector('footer p');
     if (footerYear) {
         const year = new Date().getFullYear();
-        footerYear.innerHTML = `&copy; ${year} Muhammad Hasnain. All rights reserved.`;
-    }
-    
-    // Add scroll animation for stats
-    const stats = document.querySelectorAll('.stat-item h3');
-    if (stats.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        document.querySelectorAll('.stat-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.5s ease';
-            observer.observe(el);
-        });
+        footerYear.innerHTML = `<span class="footer-prompt">$</span> Muhammad Hasnain © ${year} | IT Support Engineer in progress`;
     }
 });
