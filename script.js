@@ -57,10 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 feedback.style.color = '#ff3860';
                 return;
             }
-            feedback.textContent = '✔ message sent! Will reply soon.';
+            feedback.textContent = '✔ message sent! Hasnain will reply soon.';
             feedback.style.color = '#00e6a0';
             contactForm.reset();
-            setTimeout(() => { feedback.textContent = ''; }, 4000);
+            setTimeout(() => { feedback.content = ''; }, 4000);
         });
     }
 });
