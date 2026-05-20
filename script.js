@@ -81,18 +81,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 4000);
         });
     }
-
-    // Dynamic footer year - FIXED VERSION
-    const yearSpan = document.getElementById('currentYear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    } else {
-        // Fallback: if span doesn't exist, create it
-        const footerPara = document.querySelector('footer p');
-        if (footerPara) {
-            const existingText = footerPara.innerHTML;
-            const currentYear = new Date().getFullYear();
-            footerPara.innerHTML = `<span class="footer-prompt">$</span> Muhammad Hasnain © ${currentYear} | Web Developer & AI/Data Science Student`;
-        }
-    }
 });
