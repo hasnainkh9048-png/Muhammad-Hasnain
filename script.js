@@ -65,10 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Footer year
-    const footerYear = document.querySelector('footer p');
-    if (footerYear) {
-        const year = new Date().getFullYear();
-        footerYear.innerHTML = `<span class="footer-prompt">$</span> Muhammad Hasnain © ${year} | IT Support Engineer in progress`;
+    // Dynamic footer year
+    const footerYearSpan = document.getElementById('currentYear');
+    if (footerYearSpan) {
+        footerYearSpan.textContent = new Date().getFullYear();
     }
 });
