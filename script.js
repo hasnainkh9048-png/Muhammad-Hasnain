@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom cursor (only on devices that support hover)
+    // Custom cursor
     if (window.matchMedia("(pointer: fine)").matches) {
         const cursorDot = document.querySelector('.cursor-dot');
         const cursorOutline = document.querySelector('.cursor-outline');
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Mobile menu toggle
+    // Mobile menu
     const menuBtn = document.querySelector('.mobile-menu-btn');
     const navList = document.querySelector('nav ul');
     
@@ -22,63 +22,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close mobile menu when clicking a nav link
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
+    // Close menu on link click
+    document.querySelectorAll('nav ul li a').forEach(link => {
         link.addEventListener('click', () => {
-            if (navList && navList.classList.contains('show')) {
-                navList.classList.remove('show');
-            }
+            if (navList) navList.classList.remove('show');
         });
     });
 
-    // Smooth scroll for anchor links
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target && this.getAttribute('href') !== '#') {
                 e.preventDefault();
-                targetElement.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
 
-    // Contact form handler
+    // Contact form
     const contactForm = document.getElementById('demo-contact-form');
     const feedback = document.getElementById('formFeedback');
     
     if (contactForm && feedback) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            
             const inputs = contactForm.querySelectorAll('input, textarea');
             let allFilled = true;
-            
-            inputs.forEach(input => {
-                if (input.value.trim() === '') {
-                    allFilled = false;
-                }
+            inputs.forEach(inp => {
+                if (inp.value.trim() === '') allFilled = false;
             });
-            
             if (!allFilled) {
                 feedback.textContent = '⚠️ error: all fields required';
                 feedback.style.color = '#ff3860';
                 return;
             }
-            
-            feedback.textContent = '✔ message sent! Hasnain will reply soon.';
+            feedback.textContent = '✔ message sent! Will reply soon.';
             feedback.style.color = '#00e6a0';
             contactForm.reset();
-            
-            setTimeout(() => {
-                feedback.textContent = '';
-            }, 4000);
+            setTimeout(() => { feedback.textContent = ''; }, 4000);
         });
     }
 });
