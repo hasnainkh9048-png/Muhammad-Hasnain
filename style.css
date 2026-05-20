@@ -369,45 +369,6 @@ nav ul li a:hover {
     border: 1px solid rgba(0, 212, 255, 0.3);
 }
 
-.experience {
-    padding: 80px 0;
-}
-
-.cyber-card {
-    background: var(--card-bg);
-    border-radius: 28px;
-    border: 1px solid rgba(0, 212, 255, 0.3);
-    padding: 32px;
-}
-
-.exp-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 32px;
-    padding-bottom: 16px;
-    border-bottom: 1px dashed var(--neon-blue);
-}
-
-.exp-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 18px;
-}
-
-.exp-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 10px;
-    background: #0f141c;
-    border-radius: 16px;
-}
-
-.exp-item i {
-    color: var(--neon-cyan);
-}
-
 .skills {
     background: var(--bg-darker);
     padding: 80px 0;
